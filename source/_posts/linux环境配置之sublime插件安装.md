@@ -100,5 +100,5 @@ https://packagecontrol.io/installation
 }
 ```
 
-也就是将"curl", "wget"往前移，我也不知道为什么，反正解决了
+也就是将"curl", "wget"往前移，这能解决这个问题
 
