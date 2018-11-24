@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="twilight">
+
+
+
+<meta name="description" content="摘要：这是一篇介绍如何在ubuntu系统里面安装tensorflow-gpu-1.9的文章">
+<meta name="keywords" content="tensorflowgpu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ubuntu安装tensorflow_gpu-1.9之五tensorflowGPU">
+<meta property="og:url" content="https://612yese.github.io/2018/11/23/ubuntu安装tensorflow-gpu-1-9之五tensorflowGPU/index.html">
+<meta property="og:site_name" content="twilight的窝">
+<meta property="og:description" content="摘要：这是一篇介绍如何在ubuntu系统里面安装tensorflow-gpu-1.9的文章">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-11-23T02:43:37.100Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ubuntu安装tensorflow_gpu-1.9之五tensorflowGPU">
+<meta name="twitter:description" content="摘要：这是一篇介绍如何在ubuntu系统里面安装tensorflow-gpu-1.9的文章">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="twilight的窝" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/img/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>ubuntu安装tensorflow_gpu-1.9之五tensorflowGPU | twilight的窝</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">twilight</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">积沙成塔，水滴石穿</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false">
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class="no-result">No results found <i class="fa fa-spinner fa-pulse"></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:240590367@qq.com" title="Email"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa 网易云音乐" href="https://music.163.com/#/user/home?id=111281634" title="网易云音乐"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/anaconda/">anaconda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cuda/">cuda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cudnn/">cudnn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/data-streaming/">data streaming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gensim/">gensim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jieba/">jieba</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nvidia/">nvidia</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python本身/">python本身</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssr/">ssr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sublime/">sublime</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tensorflowgpu/">tensorflowgpu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tfidf/">tfidf</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vps/">vps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/word2vec/">word2vec</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xml解析/">xml解析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分词/">分词</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生日快乐/">生日快乐</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">君子曰：学不可以已。</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">twilight</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">twilight</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">积沙成塔，水滴石穿</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:240590367@qq.com" title="Email"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa 网易云音乐" target="_blank" href="https://music.163.com/#/user/home?id=111281634" title="网易云音乐"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
+</nav>
+      <div class="body-wrap"><article id="post-ubuntu安装tensorflow-gpu-1-9之五tensorflowGPU" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/11/23/ubuntu安装tensorflow-gpu-1-9之五tensorflowGPU/" class="article-date">
+      <time datetime="2018-11-23T01:22:39.000Z" itemprop="datePublished">2018-11-23</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ubuntu安装tensorflow_gpu-1.9之五tensorflowGPU
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/tensorflow安装/">tensorflow安装</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tensorflowgpu/">tensorflowgpu</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><excerpt in="" index="" |="" 首页摘要="">摘要：这是一篇介绍如何在ubuntu系统里面安装tensorflow-gpu-1.9的文章<a id="more"></a></excerpt></p>
+<the rest="" of="" contents="" |="" 余下全文="">
+
+<p>参考：<a href="https://blog.csdn.net/davidhopper/article/details/81206673" target="_blank" rel="noopener">https://blog.csdn.net/davidhopper/article/details/81206673</a></p>
+<p><a href="https://blog.ailemon.me/2017/06/06/install-tensorflow-gpu-on-ubuntu-linux/" target="_blank" rel="noopener">https://blog.ailemon.me/2017/06/06/install-tensorflow-gpu-on-ubuntu-linux/</a></p>
+<h1 id="激活anaconda子环境"><a href="#激活anaconda子环境" class="headerlink" title="激活anaconda子环境"></a><strong>激活anaconda子环境</strong></h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source activate tfgpu</span><br></pre></td></tr></table></figure>
+<h1 id="升级更新pip"><a href="#升级更新pip" class="headerlink" title="升级更新pip"></a><strong>升级更新pip</strong></h1><p>如果本机未安装python和pip，则安装之</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install python-pip python-dev</span><br></pre></td></tr></table></figure>
+<p>更新pip</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip install -U pip</span><br></pre></td></tr></table></figure>
+<p>升级pip并添加别的源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir ~/.pip</span><br><span class="line"></span><br><span class="line">vi ~/.pip/pip.conf</span><br></pre></td></tr></table></figure>
+<p>添加如下内容并保存退出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[global] index-url=http://mirrors.aliyun.com/pypi/simple/ </span><br><span class="line">[install] trusted-host=mirrors.aliyun.com</span><br></pre></td></tr></table></figure>
+<h1 id="安装tensorflow-gpu-1-9-0"><a href="#安装tensorflow-gpu-1-9-0" class="headerlink" title="安装tensorflow-gpu 1.9.0"></a><strong>安装tensorflow-gpu 1.9.0</strong></h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install tensorflow-gpu==1.9.0</span><br></pre></td></tr></table></figure>
+<p>测试tensorflowGPU是否使用了GPU</p>
+<p>import tensorflow as tf<br>tf.test.is_gpu_available()</p>
+<p>如果输出true，则表示GPU正常运行了</p>
+<p>\&lt; &lt; &lt;True</p>
+<p>下面是当时控制台的一些信息，记录一下，这个True字很令人开心</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br></pre></td><td class="code"><pre><span class="line">(tfgpu) gyw@gyw-HP-Pavilion-Notebook:~$ mkdir ~/.pip</span><br><span class="line">(tfgpu) gyw@gyw-HP-Pavilion-Notebook:~$ vi ~/.pip/pip.conf</span><br><span class="line">(tfgpu) gyw@gyw-HP-Pavilion-Notebook:~$ vim ~/.pip/pip.conf</span><br><span class="line">The program &apos;vim&apos; can be found in the following packages:</span><br><span class="line"></span><br><span class="line">- vim</span><br><span class="line">- vim-gnome</span><br><span class="line">- vim-tiny</span><br><span class="line">- vim-athena</span><br><span class="line">- vim-athena-py2</span><br><span class="line">- vim-gnome-py2</span><br><span class="line">- vim-gtk</span><br><span class="line">- vim-gtk-py2</span><br><span class="line">- vim-gtk3</span><br><span class="line">- vim-gtk3-py2</span><br><span class="line">- vim-nox</span><br><span class="line">- vim-nox-py2</span><br><span class="line">  Try: sudo apt install &lt;selected package&gt;</span><br><span class="line">  (tfgpu) gyw@gyw-HP-Pavilion-Notebook:~$ vi ~/.pip/pip.conf</span><br><span class="line">  (tfgpu) gyw@gyw-HP-Pavilion-Notebook:~$ sudo gedit ~/.pip/pip.conf </span><br><span class="line"></span><br><span class="line">(gedit:9177): Gtk-WARNING **: Calling Inhibit failed: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name org.gnome.SessionManager was not provided by any .service files</span><br><span class="line"></span><br><span class="line">** (gedit:9177): WARNING **: Set document metadata failed: Setting attribute metadata::gedit-spell-enabled not supported</span><br><span class="line"></span><br><span class="line">** (gedit:9177): WARNING **: Set document metadata failed: Setting attribute metadata::gedit-encoding not supported</span><br><span class="line"></span><br><span class="line">** (gedit:9177): WARNING **: Set document metadata failed: Setting attribute metadata::gedit-position not supported</span><br><span class="line">(tfgpu) gyw@gyw-HP-Pavilion-Notebook:~$ sudo pip install -U pip</span><br><span class="line">sudo: pip: command not found</span><br><span class="line">(tfgpu) gyw@gyw-HP-Pavilion-Notebook:~$ sudo apt-get install python-pip python-dev</span><br><span class="line">Reading package lists... Done</span><br><span class="line">Building dependency tree       </span><br><span class="line">Reading state information... Done</span><br><span class="line">The following additional packages will be installed:</span><br><span class="line">  libpython-all-dev libpython-dev libpython2.7-dev python-all python-all-dev python-pkg-resources python-setuptools python-wheel python2.7-dev</span><br><span class="line">Suggested packages:</span><br><span class="line">  python-setuptools-doc</span><br><span class="line">The following NEW packages will be installed:</span><br><span class="line">  libpython-all-dev libpython-dev libpython2.7-dev python-all python-all-dev python-dev python-pip python-pkg-resources python-setuptools python-wheel python2.7-dev</span><br><span class="line">0 upgraded, 11 newly installed, 0 to remove and 3 not upgraded.</span><br><span class="line">Need to get 28.6 MB of archives.</span><br><span class="line">After this operation, 43.1 MB of additional disk space will be used.</span><br><span class="line">Do you want to continue? [Y/n] y</span><br><span class="line">Get:1 http://mirrors.nju.edu.cn/ubuntu xenial-updates/main amd64 libpython2.7-dev amd64 2.7.12-1ubuntu0~16.04.4 [27.8 MB]</span><br><span class="line">Get:2 http://mirrors.nju.edu.cn/ubuntu xenial-updates/main amd64 libpython-dev amd64 2.7.12-1~16.04 [7,840 B]</span><br><span class="line">Get:3 http://mirrors.nju.edu.cn/ubuntu xenial-updates/main amd64 libpython-all-dev amd64 2.7.12-1~16.04 [1,006 B]</span><br><span class="line">Get:4 http://mirrors.nju.edu.cn/ubuntu xenial-updates/main amd64 python-all amd64 2.7.12-1~16.04 [996 B]</span><br><span class="line">Get:5 http://mirrors.nju.edu.cn/ubuntu xenial-updates/main amd64 python2.7-dev amd64 2.7.12-1ubuntu0~16.04.4 [276 kB]</span><br><span class="line">Get:6 http://mirrors.nju.edu.cn/ubuntu xenial-updates/main amd64 python-dev amd64 2.7.12-1~16.04 [1,186 B]</span><br><span class="line">Get:7 http://mirrors.nju.edu.cn/ubuntu xenial-updates/main amd64 python-all-dev amd64 2.7.12-1~16.04 [1,016 B]</span><br><span class="line">Get:8 http://mirrors.nju.edu.cn/ubuntu xenial-updates/universe amd64 python-pip all 8.1.1-2ubuntu0.4 [144 kB]</span><br><span class="line">Get:9 http://mirrors.nju.edu.cn/ubuntu xenial/main amd64 python-pkg-resources all 20.7.0-1 [108 kB]</span><br><span class="line">Get:10 http://mirrors.nju.edu.cn/ubuntu xenial/main amd64 python-setuptools all 20.7.0-1 [169 kB]</span><br><span class="line">Get:11 http://mirrors.nju.edu.cn/ubuntu xenial/universe amd64 python-wheel all 0.29.0-1 [48.0 kB]</span><br><span class="line">Fetched 28.6 MB in 3s (7,260 kB/s)       </span><br><span class="line">Selecting previously unselected package libpython2.7-dev:amd64.</span><br><span class="line">(Reading database ... 217001 files and directories currently installed.)</span><br><span class="line">Preparing to unpack .../libpython2.7-dev_2.7.12-1ubuntu0~16.04.4_amd64.deb ...</span><br><span class="line">Unpacking libpython2.7-dev:amd64 (2.7.12-1ubuntu0~16.04.4) ...</span><br><span class="line">Selecting previously unselected package libpython-dev:amd64.</span><br><span class="line">Preparing to unpack .../libpython-dev_2.7.12-1~16.04_amd64.deb ...</span><br><span class="line">Unpacking libpython-dev:amd64 (2.7.12-1~16.04) ...</span><br><span class="line">Selecting previously unselected package libpython-all-dev:amd64.</span><br><span class="line">Preparing to unpack .../libpython-all-dev_2.7.12-1~16.04_amd64.deb ...</span><br><span class="line">Unpacking libpython-all-dev:amd64 (2.7.12-1~16.04) ...</span><br><span class="line">Selecting previously unselected package python-all.</span><br><span class="line">Preparing to unpack .../python-all_2.7.12-1~16.04_amd64.deb ...</span><br><span class="line">Unpacking python-all (2.7.12-1~16.04) ...</span><br><span class="line">Selecting previously unselected package python2.7-dev.</span><br><span class="line">Preparing to unpack .../python2.7-dev_2.7.12-1ubuntu0~16.04.4_amd64.deb ...</span><br><span class="line">Unpacking python2.7-dev (2.7.12-1ubuntu0~16.04.4) ...</span><br><span class="line">Selecting previously unselected package python-dev.</span><br><span class="line">Preparing to unpack .../python-dev_2.7.12-1~16.04_amd64.deb ...</span><br><span class="line">Unpacking python-dev (2.7.12-1~16.04) ...</span><br><span class="line">Selecting previously unselected package python-all-dev.</span><br><span class="line">Preparing to unpack .../python-all-dev_2.7.12-1~16.04_amd64.deb ...</span><br><span class="line">Unpacking python-all-dev (2.7.12-1~16.04) ...</span><br><span class="line">Selecting previously unselected package python-pip.</span><br><span class="line">Preparing to unpack .../python-pip_8.1.1-2ubuntu0.4_all.deb ...</span><br><span class="line">Unpacking python-pip (8.1.1-2ubuntu0.4) ...</span><br><span class="line">Selecting previously unselected package python-pkg-resources.</span><br><span class="line">Preparing to unpack .../python-pkg-resources_20.7.0-1_all.deb ...</span><br><span class="line">Unpacking python-pkg-resources (20.7.0-1) ...</span><br><span class="line">Selecting previously unselected package python-setuptools.</span><br><span class="line">Preparing to unpack .../python-setuptools_20.7.0-1_all.deb ...</span><br><span class="line">Unpacking python-setuptools (20.7.0-1) ...</span><br><span class="line">Selecting previously unselected package python-wheel.</span><br><span class="line">Preparing to unpack .../python-wheel_0.29.0-1_all.deb ...</span><br><span class="line">Unpacking python-wheel (0.29.0-1) ...</span><br><span class="line">Processing triggers for man-db (2.7.5-1) ...</span><br><span class="line">Setting up libpython2.7-dev:amd64 (2.7.12-1ubuntu0~16.04.4) ...</span><br><span class="line">Setting up libpython-dev:amd64 (2.7.12-1~16.04) ...</span><br><span class="line">Setting up libpython-all-dev:amd64 (2.7.12-1~16.04) ...</span><br><span class="line">Setting up python-all (2.7.12-1~16.04) ...</span><br><span class="line">Setting up python2.7-dev (2.7.12-1ubuntu0~16.04.4) ...</span><br><span class="line">Setting up python-dev (2.7.12-1~16.04) ...</span><br><span class="line">Setting up python-all-dev (2.7.12-1~16.04) ...</span><br><span class="line">Setting up python-pip (8.1.1-2ubuntu0.4) ...</span><br><span class="line">Setting up python-pkg-resources (20.7.0-1) ...</span><br><span class="line">Setting up python-setuptools (20.7.0-1) ...</span><br><span class="line">Setting up python-wheel (0.29.0-1) ...</span><br><span class="line"></span><br><span class="line">(tfgpu) gyw@gyw-HP-Pavilion-Notebook:~$ pip install tensorflow-gpu==1.9.0</span><br><span class="line">Looking in indexes: http://mirrors.aliyun.com/pypi/simple/</span><br><span class="line">Collecting tensorflow-gpu==1.9.0</span><br><span class="line">  Downloading http://mirrors.aliyun.com/pypi/packages/f1/3b/f24b243038db1c6c73acddd4c5f1497e2de596f381fe76d1f80204b0fa21/tensorflow_gpu-1.9.0-cp35-cp35m-manylinux1_x86_64.whl (229.6MB)</span><br><span class="line">    100% |████████████████████████████████| 229.6MB 3.2MB/s </span><br><span class="line">Collecting protobuf&gt;=3.4.0 (from tensorflow-gpu==1.9.0)</span><br><span class="line">  Downloading http://mirrors.aliyun.com/pypi/packages/bf/d4/db7296a1407cad69f043537ba1e05afab3646451a066ead7a314d8714388/protobuf-3.6.1-cp35-cp35m-manylinux1_x86_64.whl (1.1MB)</span><br><span class="line">    100% |████████████████████████████████| 1.1MB 12.8MB/s </span><br><span class="line">Collecting grpcio&gt;=1.8.6 (from tensorflow-gpu==1.9.0)</span><br><span class="line">  Downloading http://mirrors.aliyun.com/pypi/packages/90/b4/ce6b50cd30a07a13143eec055c9737573916327217fbe243e38856e2ab95/grpcio-1.16.1-cp35-cp35m-manylinux1_x86_64.whl (9.7MB)</span><br><span class="line">    100% |████████████████████████████████| 9.7MB 7.4MB/s </span><br><span class="line">Collecting six&gt;=1.10.0 (from tensorflow-gpu==1.9.0)</span><br><span class="line">  Downloading http://mirrors.aliyun.com/pypi/packages/67/4b/141a581104b1f6397bfa78ac9d43d8ad29a7ca43ea90a2d863fe3056e86a/six-1.11.0-py2.py3-none-any.whl</span><br><span class="line">Collecting absl-py&gt;=0.1.6 (from tensorflow-gpu==1.9.0)</span><br><span class="line">  Downloading http://mirrors.aliyun.com/pypi/packages/0c/63/f505d2d4c21db849cf80bad517f0065a30be6b006b0a5637f1b95584a305/absl-py-0.6.1.tar.gz (94kB)</span><br><span class="line">    100% |████████████████████████████████| 102kB 10.5MB/s </span><br><span class="line">Collecting gast&gt;=0.2.0 (from tensorflow-gpu==1.9.0)</span><br><span class="line">  Downloading http://mirrors.aliyun.com/pypi/packages/5c/78/ff794fcae2ce8aa6323e789d1f8b3b7765f601e7702726f430e814822b96/gast-0.2.0.tar.gz</span><br><span class="line">Collecting numpy&gt;=1.13.3 (from tensorflow-gpu==1.9.0)</span><br><span class="line">  Downloading http://mirrors.aliyun.com/pypi/packages/86/04/bd774106ae0ae1ada68c67efe89f1a16b2aa373cc2db15d974002a9f136d/numpy-1.15.4-cp35-cp35m-manylinux1_x86_64.whl (13.8MB)</span><br><span class="line">    100% |████████████████████████████████| 13.8MB 2.7MB/s </span><br><span class="line">Collecting astor&gt;=0.6.0 (from tensorflow-gpu==1.9.0)</span><br><span class="line">  Downloading http://mirrors.aliyun.com/pypi/packages/35/6b/11530768cac581a12952a2aad00e1526b89d242d0b9f59534ef6e6a1752f/astor-0.7.1-py2.py3-none-any.whl</span><br><span class="line">Collecting setuptools&lt;=39.1.0 (from tensorflow-gpu==1.9.0)</span><br><span class="line">  Downloading http://mirrors.aliyun.com/pypi/packages/8c/10/79282747f9169f21c053c562a0baa21815a8c7879be97abd930dbcf862e8/setuptools-39.1.0-py2.py3-none-any.whl (566kB)</span><br><span class="line">    100% |████████████████████████████████| 573kB 13.8MB/s </span><br><span class="line">Collecting tensorboard&lt;1.10.0,&gt;=1.9.0 (from tensorflow-gpu==1.9.0)</span><br><span class="line">  Downloading http://mirrors.aliyun.com/pypi/packages/9e/1f/3da43860db614e294a034e42d4be5c8f7f0d2c75dc1c428c541116d8cdab/tensorboard-1.9.0-py3-none-any.whl (3.3MB)</span><br><span class="line">    100% |████████████████████████████████| 3.3MB 9.3MB/s </span><br><span class="line">Requirement already satisfied: wheel&gt;=0.26 in ./anaconda3/envs/tfgpu/lib/python3.5/site-packages (from tensorflow-gpu==1.9.0) (0.31.1)</span><br><span class="line">Collecting termcolor&gt;=1.1.0 (from tensorflow-gpu==1.9.0)</span><br><span class="line">  Downloading http://mirrors.aliyun.com/pypi/packages/8a/48/a76be51647d0eb9f10e2a4511bf3ffb8cc1e6b14e9e4fab46173aa79f981/termcolor-1.1.0.tar.gz</span><br><span class="line">Collecting werkzeug&gt;=0.11.10 (from tensorboard&lt;1.10.0,&gt;=1.9.0-&gt;tensorflow-gpu==1.9.0)</span><br><span class="line">  Downloading http://mirrors.aliyun.com/pypi/packages/20/c4/12e3e56473e52375aa29c4764e70d1b8f3efa6682bef8d0aae04fe335243/Werkzeug-0.14.1-py2.py3-none-any.whl (322kB)</span><br><span class="line">    100% |████████████████████████████████| 327kB 9.1MB/s </span><br><span class="line">Collecting markdown&gt;=2.6.8 (from tensorboard&lt;1.10.0,&gt;=1.9.0-&gt;tensorflow-gpu==1.9.0)</span><br><span class="line">  Downloading http://mirrors.aliyun.com/pypi/packages/7a/6b/5600647404ba15545ec37d2f7f58844d690baf2f81f3a60b862e48f29287/Markdown-3.0.1-py2.py3-none-any.whl (89kB)</span><br><span class="line">    100% |████████████████████████████████| 92kB 7.8MB/s </span><br><span class="line">Building wheels for collected packages: absl-py, gast, termcolor</span><br><span class="line">  Running setup.py bdist_wheel for absl-py ... done</span><br><span class="line">  Stored in directory: /home/gyw/.cache/pip/wheels/aa/4d/58/b32b9fecc4f448dce09a02441f823fe46f70cab32285304553</span><br><span class="line">  Running setup.py bdist_wheel for gast ... done</span><br><span class="line">  Stored in directory: /home/gyw/.cache/pip/wheels/17/0a/dc/bb6d7b129029482a8d55901d66b65e756a681f6a1da7297a9b</span><br><span class="line">  Running setup.py bdist_wheel for termcolor ... done</span><br><span class="line">  Stored in directory: /home/gyw/.cache/pip/wheels/65/c8/98/8361afe9bafba434b7acf14c08627560d63018272226ff3e10</span><br><span class="line">Successfully built absl-py gast termcolor</span><br><span class="line">Installing collected packages: setuptools, six, protobuf, grpcio, absl-py, gast, numpy, astor, werkzeug, markdown, tensorboard, termcolor, tensorflow-gpu</span><br><span class="line">  Found existing installation: setuptools 40.2.0</span><br><span class="line">    Uninstalling setuptools-40.2.0:</span><br><span class="line">      Successfully uninstalled setuptools-40.2.0</span><br><span class="line">Successfully installed absl-py-0.6.1 astor-0.7.1 gast-0.2.0 grpcio-1.16.1 markdown-3.0.1 numpy-1.15.4 protobuf-3.6.1 setuptools-39.1.0 six-1.11.0 tensorboard-1.9.0 tensorflow-gpu-1.9.0 termcolor-1.1.0 werkzeug-0.14.1</span><br><span class="line">You are using pip version 10.0.1, however version 18.1 is available.</span><br><span class="line">You should consider upgrading via the &apos;pip install --upgrade pip&apos; command.</span><br><span class="line">(tfgpu) gyw@gyw-HP-Pavilion-Notebook:~$ python</span><br><span class="line">Python 3.5.6 |Anaconda, Inc.| (default, Aug 26 2018, 21:41:56) </span><br><span class="line">[GCC 7.3.0] on linux</span><br><span class="line">Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.</span><br><span class="line"></span><br><span class="line">&gt; &gt; &gt; import tensorflow as tf</span><br><span class="line">&gt; &gt; &gt; tf.test.is_gpu_available()</span><br><span class="line">&gt; &gt; &gt; 2018-11-23 16:29:05.273136: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA</span><br><span class="line">&gt; &gt; &gt; 2018-11-23 16:29:05.600329: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:897] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero</span><br><span class="line">&gt; &gt; &gt; 2018-11-23 16:29:05.601321: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1392] Found device 0 with properties: </span><br><span class="line">&gt; &gt; &gt; name: GeForce GTX 1050 major: 6 minor: 1 memoryClockRate(GHz): 1.493</span><br><span class="line">&gt; &gt; &gt; pciBusID: 0000:01:00.0</span><br><span class="line">&gt; &gt; &gt; totalMemory: 1.95GiB freeMemory: 1.68GiB</span><br><span class="line">&gt; &gt; &gt; 2018-11-23 16:29:05.601373: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1471] Adding visible gpu devices: 0</span><br><span class="line">&gt; &gt; &gt; 2018-11-23 16:29:05.837880: I tensorflow/core/common_runtime/gpu/gpu_device.cc:952] Device interconnect StreamExecutor with strength 1 edge matrix:</span><br><span class="line">&gt; &gt; &gt; 2018-11-23 16:29:05.837934: I tensorflow/core/common_runtime/gpu/gpu_device.cc:958]      0 </span><br><span class="line">&gt; &gt; &gt; 2018-11-23 16:29:05.837942: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] 0:   N </span><br><span class="line">&gt; &gt; &gt; 2018-11-23 16:29:05.838148: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1084] Created TensorFlow device (/device:GPU:0 with 1440 MB memory) -&gt; physical GPU (device: 0, name: GeForce GTX 1050, pci bus id: 0000:01:00.0, compute capability: 6.1)</span><br><span class="line">&gt; &gt; &gt; True</span><br></pre></td></tr></table></figure>
+</the>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2018/11/23/ubuntu安装tensorflow-gpu-1-9之五tensorflowGPU/">ubuntu安装tensorflow_gpu-1.9之五tensorflowGPU</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">twilight</a></p>
+        <p><span>发布时间:</span>2018-11-23, 09:22:39</p>
+        <p><span>最后更新:</span>2018-11-23, 10:43:37</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/11/23/ubuntu安装tensorflow-gpu-1-9之五tensorflowGPU/" title="ubuntu安装tensorflow_gpu-1.9之五tensorflowGPU">https://612yese.github.io/2018/11/23/ubuntu安装tensorflow-gpu-1-9之五tensorflowGPU/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://612yese.github.io/2018/11/23/ubuntu安装tensorflow-gpu-1-9之五tensorflowGPU/　　作者: twilight" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2018/11/23/ubuntu安装tensorflow-gpu-1-9之四Anaconda/">
+                    ubuntu安装tensorflow_gpu-1.9之四Anaconda
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#激活anaconda子环境"><span class="toc-number">1.</span> <span class="toc-text">激活anaconda子环境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#升级更新pip"><span class="toc-number">2.</span> <span class="toc-text">升级更新pip</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装tensorflow-gpu-1-9-0"><span class="toc-number">3.</span> <span class="toc-text">安装tensorflow-gpu 1.9.0</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"ubuntu安装tensorflow_gpu-1.9之五tensorflowGPU　| twilight的窝　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+        <section id="comments">
+    <style> aside.comment-bar { margin: auto 30px; }</style>
+    <div id="disqus_thread"></div>
+    <script>
+        var disqus_config = function(){
+            this.page.url = 'https://612yese.github.io/2018/11/23/ubuntu安装tensorflow-gpu-1-9之五tensorflowGPU/';
+            this.page.identifier = '2018/11/23/ubuntu安装tensorflow-gpu-1-9之五tensorflowGPU/';
+        };
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = '//twilight-2.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        }
+    </script>
+    
+    <script> loadComment(); </script>
+
+</section>
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2018/11/23/ubuntu安装tensorflow-gpu-1-9之四Anaconda/" title="下一篇: ubuntu安装tensorflow_gpu-1.9之四Anaconda">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/11/23/ubuntu安装tensorflow-gpu-1-9之五tensorflowGPU/">ubuntu安装tensorflow_gpu-1.9之五tensorflowGPU</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/23/ubuntu安装tensorflow-gpu-1-9之四Anaconda/">ubuntu安装tensorflow_gpu-1.9之四Anaconda</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/23/ubuntu安装tensorflow-gpu-1-9之三cudnn7-3/">ubuntu安装tensorflow_gpu-1.9之三cudnn7.3</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/23/ubuntu安装tensorflow-gpu-1-9之二cuda9-0/">ubuntu安装tensorflow_gpu-1.9之二cuda9.0</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/23/ubuntu安装tensorflow-gpu-1-9之一nvidia/">ubuntu安装tensorflow_gpu-1.9之一nvidia</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/22/linux环境配置之sublime插件安装/">linux环境配置之sublime插件安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/21/linux下Nvidia驱动安装/">linux下Nvidia驱动安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/21/linux与windows双系统安装/">linux与windows双系统安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/21/python的os-path用法/">python的os.path用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/20/python的xml解析/">python的xml解析</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/20/VPS与ssr搭建/">VPS与ssr搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/10/吉他谱-祝你生日快乐/">吉他谱_祝你生日快乐</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/10/python里的Data-streaming总结/">python里的Data streaming总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/09/分词/">jieba之分词</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/09/tfidf/">genism之tfidf</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/09/word2vec/">word2vec工具探索</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/07/建立这个站点/">如何建立这个站点</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2018 twilight
+            </div>
+            <div class="footer-right">
+                <!--<a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>-->
+                <a href="http://612yese.github.io/" target="_blank" title="快速、简洁且高效的博客框架">twilight</a>の个人博客  <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style="display:none">
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style="display:none">
+                        <span id="page-visit" title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 1;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

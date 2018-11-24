@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="twilight">
+
+
+
+<meta name="description" content="摘要：[转载]这是一篇介绍如何利用远程虚拟主机去搭建ssr获得访问外网的能力">
+<meta name="keywords" content="vps,ssr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VPS与ssr搭建">
+<meta property="og:url" content="https://612yese.github.io/2018/11/20/VPS与ssr搭建/index.html">
+<meta property="og:site_name" content="twilight的窝">
+<meta property="og:description" content="摘要：[转载]这是一篇介绍如何利用远程虚拟主机去搭建ssr获得访问外网的能力">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://612yese.github.io/2018/11/20/VPS与ssr搭建/pac教程01.png">
+<meta property="og:image" content="https://612yese.github.io/2018/11/20/VPS与ssr搭建/pac教程02.png">
+<meta property="og:image" content="https://612yese.github.io/2018/11/20/VPS与ssr搭建/pac教程04.png">
+<meta property="og:image" content="https://612yese.github.io/2018/11/20/VPS与ssr搭建/pac教程05.png">
+<meta property="og:image" content="https://612yese.github.io/2018/11/20/VPS与ssr搭建/pac教程06.png">
+<meta property="og:image" content="https://612yese.github.io/2018/11/20/VPS与ssr搭建/de2.PNG">
+<meta property="og:image" content="https://612yese.github.io/2018/11/20/VPS与ssr搭建/de5.png">
+<meta property="og:image" content="https://612yese.github.io/2018/11/20/VPS与ssr搭建/xshell11.png">
+<meta property="og:image" content="https://612yese.github.io/2018/11/20/VPS与ssr搭建/xshell12.png">
+<meta property="og:image" content="https://612yese.github.io/2018/11/20/VPS与ssr搭建/xshell13.png">
+<meta property="og:image" content="https://612yese.github.io/2018/11/20/VPS与ssr搭建/xshell14.png">
+<meta property="og:image" content="https://612yese.github.io/2018/11/20/VPS与ssr搭建/xshell2.png">
+<meta property="og:image" content="https://612yese.github.io/2018/11/20/VPS与ssr搭建/8.png">
+<meta property="og:image" content="https://612yese.github.io/2018/11/20/VPS与ssr搭建/31.png">
+<meta property="og:image" content="https://612yese.github.io/2018/11/20/VPS与ssr搭建/32.png">
+<meta property="og:image" content="https://612yese.github.io/2018/11/20/VPS与ssr搭建/11.png">
+<meta property="og:image" content="https://612yese.github.io/2018/11/20/VPS与ssr搭建/41.PNG">
+<meta property="og:image" content="https://612yese.github.io/2018/11/20/VPS与ssr搭建/33.png">
+<meta property="og:image" content="https://612yese.github.io/2018/11/20/VPS与ssr搭建/14.png">
+<meta property="og:image" content="https://612yese.github.io/2018/11/20/VPS与ssr搭建/15.png">
+<meta property="og:image" content="https://612yese.github.io/2018/11/20/VPS与ssr搭建/16.png">
+<meta property="og:image" content="https://612yese.github.io/2018/11/20/VPS与ssr搭建/34.png">
+<meta property="og:image" content="https://612yese.github.io/2018/11/20/VPS与ssr搭建/22.png">
+<meta property="og:image" content="https://612yese.github.io/2018/11/20/VPS与ssr搭建/23.png">
+<meta property="og:image" content="https://612yese.github.io/2018/11/20/VPS与ssr搭建/18.png">
+<meta property="og:image" content="https://612yese.github.io/2018/11/20/VPS与ssr搭建/20.png">
+<meta property="og:image" content="https://612yese.github.io/2018/11/20/VPS与ssr搭建/21.png">
+<meta property="og:image" content="https://612yese.github.io/2018/11/20/VPS与ssr搭建/42.PNG">
+<meta property="og:image" content="https://612yese.github.io/2018/11/20/VPS与ssr搭建/32225069-cfe6195a-be7e-11e7-99e0-e2fa98f93b1f.png">
+<meta property="og:updated_time" content="2018-11-20T11:31:54.155Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="VPS与ssr搭建">
+<meta name="twitter:description" content="摘要：[转载]这是一篇介绍如何利用远程虚拟主机去搭建ssr获得访问外网的能力">
+<meta name="twitter:image" content="https://612yese.github.io/2018/11/20/VPS与ssr搭建/pac教程01.png">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="twilight的窝" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/img/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>VPS与ssr搭建 | twilight的窝</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">twilight</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">积沙成塔，水滴石穿</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false">
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class="no-result">No results found <i class="fa fa-spinner fa-pulse"></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:240590367@qq.com" title="Email"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa 网易云音乐" href="https://music.163.com/#/user/home?id=111281634" title="网易云音乐"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/anaconda/">anaconda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cuda/">cuda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cudnn/">cudnn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/data-streaming/">data streaming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gensim/">gensim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jieba/">jieba</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nvidia/">nvidia</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python本身/">python本身</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssr/">ssr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sublime/">sublime</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tensorflowgpu/">tensorflowgpu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tfidf/">tfidf</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vps/">vps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/word2vec/">word2vec</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xml解析/">xml解析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分词/">分词</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生日快乐/">生日快乐</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">君子曰：学不可以已。</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">twilight</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">twilight</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">积沙成塔，水滴石穿</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:240590367@qq.com" title="Email"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa 网易云音乐" target="_blank" href="https://music.163.com/#/user/home?id=111281634" title="网易云音乐"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
+</nav>
+      <div class="body-wrap"><article id="post-VPS与ssr搭建" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/11/20/VPS与ssr搭建/" class="article-date">
+      <time datetime="2018-11-20T10:45:19.000Z" itemprop="datePublished">2018-11-20</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      VPS与ssr搭建
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/tools/">tools</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssr/">ssr</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vps/">vps</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><excerpt in="" index="" |="" 首页摘要="">摘要：[转载]这是一篇介绍如何利用远程虚拟主机去搭建ssr获得访问外网的能力<a id="more"></a></excerpt></p>
+<the rest="" of="" contents="" |="" 余下全文="">
+
+<h1 id="本文的来源"><a href="#本文的来源" class="headerlink" title="本文的来源"></a>本文的来源</h1><p><a href="https://www.baishitou.cn/1524.html" target="_blank" rel="noopener">用VPS搭建SSR服务器教程</a></p>
+<p>点击上面链接可以查看原文</p>
+<h1 id="第一步：购买VPS服务器"><a href="#第一步：购买VPS服务器" class="headerlink" title="第一步：购买VPS服务器"></a><strong>第一步：购买VPS服务器</strong></h1><p>VPS服务器需要选择国外的，首选国际知名的vultr，速度不错、稳定且性价比高，按小时计费，能够随时开通和删除服务器，新服务器即是新ip </p>
+<p>注册并邮件激活账号，充值后即可购买服务器。充值方式是paypal（首选）或支付宝 </p>
+<p>建议选择最便宜的ipv4的服务器，我选了3.5$/month的那类，每月有500G流量。</p>
+<p><strong>vultr实际上是折算成小时来计费的，比如服务器是5美元1个月，那么每小时收费为5/30/24=0.0069美元 会自动从账号中扣费，只要保证账号有钱即可。如果你部署的服务器实测后速度不理想，你可以把它删掉（destroy），重新换个地区的服务器来部署，方便且实用。因为新的服务器就是新的ip，所以当ip被封时这个方法很有用。当ip被封时，为了保证新开的服务器ip和原先的ip不一样，先开新服务器，开好后再删除旧服务器即可。</strong> </p>
+<p>服务器搭建：</p>
+<p><img src="/2018/11/20/VPS与ssr搭建/pac教程01.png" alt="pac教程01"></p>
+<p><img src="/2018/11/20/VPS与ssr搭建/pac教程02.png" alt="pac教程02"></p>
+<p><img src="/2018/11/20/VPS与ssr搭建/pac教程04.png" alt="pac教程04"></p>
+<p><strong>选择vps操作系统时，不要选centos7系统！点击图中的CentOS几个字，会弹出centos6，然后选中centos6！entos7默认的防火墙可能会干扰ssr的正常连接！</strong></p>
+<p><strong>完成购买后，找到系统的密码记下来，部署服务器时需要用到。vps系统（推荐centos6）的密码获取方法如下图</strong> </p>
+<p><img src="/2018/11/20/VPS与ssr搭建/pac教程05.png" alt="pac教程05"></p>
+<p><img src="/2018/11/20/VPS与ssr搭建/pac教程06.png" alt="pac教程06"></p>
+<p><strong>删掉服务器步骤如下图</strong>： </p>
+<p><img src="/2018/11/20/VPS与ssr搭建/de2.PNG" alt="de2"></p>
+<p><img src="/2018/11/20/VPS与ssr搭建/de5.png" alt="de5"></p>
+<h1 id="第二步：部署VPS服务器"><a href="#第二步：部署VPS服务器" class="headerlink" title="第二步：部署VPS服务器"></a><strong>第二步：部署VPS服务器</strong></h1><p>购买服务器后，需要部署一下。因为你买的是虚拟东西，而且又远在国外，我们需要一个叫Xshell的软件来远程部署。建议下载一个免费版本的xshell就行了</p>
+<p>链接：<a href="https://pan.baidu.com/s/1Q2qq6xQH9pEnPJjXMPLwlA" target="_blank" rel="noopener">https://pan.baidu.com/s/1Q2qq6xQH9pEnPJjXMPLwlA</a><br>提取码：3vb1 </p>
+<p>如果你是苹果电脑操作系统，更简单，无需下载xshell，系统可以直接连接VPS。打开<strong>终端</strong>（Terminal），输入ssh root@ip 其中“ip”替换成你VPS的ip, 按回车键，然后复制粘贴密码，按回车键即可登录。粘贴密码时有可能不显示密码，但不影响， <a href="http://www.cnblogs.com/ghj1976/archive/2013/04/19/3030159.html" target="_blank" rel="noopener">参考设置方法</a> 如果不能用MAC自带的终端连接的话，直接网上搜“MAC连接SSH的软件”，有很多，然后通过软件来连接vps服务器就行，具体操作方式参考windows xshell。 </p>
+<p><strong>部署教程：</strong> </p>
+<p>下载xshell软件并安装后，打开软件 </p>
+<p><img src="/2018/11/20/VPS与ssr搭建/xshell11.png" alt="xshell11"></p>
+<p>选择文件，新建 </p>
+<p><img src="/2018/11/20/VPS与ssr搭建/xshell12.png" alt="xshell12"></p>
+<p>随便取个名字，然后把你的服务器ip填上 </p>
+<p><img src="/2018/11/20/VPS与ssr搭建/xshell13.png" alt="xshell13"></p>
+<p>连接国外ip即服务器时，软件会先后提醒你输入用户名和密码，用户名默认都是root，密码是你购买的服务器系统的密码。</p>
+<p><strong>如果xshell连不上服务器，没有弹出让你输入用户名和密码的输入框，表明你开到的ip是一个被封的ip，遇到这种情况，重新开新的服务器，直到能用xshell连上为止，耐心点哦！如果同一个地区开了多台服务器还是不行的话，可以换其它地区。</strong></p>
+<p><img src="/2018/11/20/VPS与ssr搭建/xshell14.png" alt="xshell14"></p>
+<p><img src="/2018/11/20/VPS与ssr搭建/xshell2.png" alt="xshell2"></p>
+<p>连接成功后，会出现如上图所示，之后就可以复制粘贴代码部署了。 </p>
+<p>将以下代码依次粘贴到shell打开的远程链接窗口里面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install wget</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -N –no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/ssr.sh &amp;&amp; chmod +x ssr.sh &amp;&amp; bash ssr.sh</span><br></pre></td></tr></table></figure>
+<p>复制上面的代码到VPS服务器里，按回车键，脚本会自动安装，以后只需要运行这个快捷命令就可以出现下图的界面进行设置，快捷管理命令为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash ssr.sh</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/11/20/VPS与ssr搭建/8.png" alt="8"></p>
+<p>如上图出现管理界面后，<strong>输入数字1来安装SSR服务端</strong>。如果输入1后不能进入下一步，那么请退出xshell，重新连接vps服务器，然后输入快捷管理命令bash ssr.sh 再尝试。 </p>
+<p><img src="/2018/11/20/VPS与ssr搭建/31.png" alt="31"></p>
+<p>根据上图提示，依次输入自己想设置的<strong>端口和密码</strong> (<strong>密码建议用复杂点的字母组合，端口号为40-65535之间的数字</strong>)，回车键用于确认</p>
+<p>注：关于端口的设置，总的网络总端口有6万多个，理论上可以任意设置。但是有的地区需要设置特殊的端口才有效，一些特殊的端口比如80、143、443、1433、3306、3389、8080。</p>
+<p><img src="/2018/11/20/VPS与ssr搭建/32.png" alt="32"></p>
+<p>如上图，选择想设置的<strong>加密方式</strong>，比如10，按回车键确认</p>
+<p>接下来是选择<strong>协议插件</strong>，如下图：</p>
+<p><img src="/2018/11/20/VPS与ssr搭建/11.png" alt="11"></p>
+<p><img src="/2018/11/20/VPS与ssr搭建/41.PNG" alt="41"></p>
+<p>选择并确认后，会出现上图的界面，提示你是否选择兼容原版，这里的原版指的是SS客户端（SS客户端没有协议和混淆的选项），可以根据需求进行选择，演示选择y</p>
+<p>之后进行混淆插件的设置。</p>
+<p><strong>注意：如果协议是origin，那么混淆也必须是plain；如果协议不是origin，那么混淆可以是任意的。有的地区需要把混淆设置成plain才好用。因为混淆不总是有效果，要看各地区的策略，有时候不混淆（plain）让其看起来像随机数据更好。（特别注意：tls 1.2_ticket_auth容易受到干扰！请选择除tls开头以外的其它混淆！！！）</strong></p>
+<p><img src="/2018/11/20/VPS与ssr搭建/33.png" alt="33"></p>
+<p>进行混淆插件的设置后，会依次提示你对设备数、单线程限速和端口总限速进行设置，默认值是不进行限制，个人使用的话，选择默认即可，即直接敲回车键。</p>
+<p>注意：关于限制设备数，这个协议必须是非原版且不兼容原版才有效，也就是必须使用SSR协议的情况下，才有效！</p>
+<p><img src="/2018/11/20/VPS与ssr搭建/14.png" alt="14"></p>
+<p>之后代码就正式自动部署了，到下图所示的位置，提示你下载文件，输入：y </p>
+<p><img src="/2018/11/20/VPS与ssr搭建/15.png" alt="15"></p>
+<p>耐心等待一会，出现下面的界面即部署完成： </p>
+<p><img src="/2018/11/20/VPS与ssr搭建/16.png" alt="16"></p>
+<p><img src="/2018/11/20/VPS与ssr搭建/34.png" alt="34"></p>
+<p>根据上图就可以看到自己设置的SSR账号信息，包括IP、端口、密码、加密方式、协议插件、混淆插件，这些信息需要填入你的SSR客户端。如果之后想修改账号信息，直接输入快捷管理命令：bash ssr.sh 进入管理界面，选择相应的数字来进行一键修改。例如： </p>
+<p><img src="/2018/11/20/VPS与ssr搭建/22.png" alt="22"></p>
+<p><img src="/2018/11/20/VPS与ssr搭建/23.png" alt="23"></p>
+<p><strong>脚本演示结束。</strong></p>
+<p>此脚本是开机自动启动，部署一次即可。最后可以重启服务器确保部署生效（一般情况不重启也可以）。重启需要在命令栏里输入reboot ，输入命令后稍微等待一会服务器就会自动重启，一般重启过程需要2～5分钟，重启过程中Xshell会自动断开连接，等VPS重启好后才可以用Xshell软件进行连接。如果部署过程中卡在某个位置超过10分钟，可以用xshell软件断开，然后重新连接你的ip，再复制代码进行部署</p>
+<h1 id="第三步：一键加速VPS服务器"><a href="#第三步：一键加速VPS服务器" class="headerlink" title="第三步：一键加速VPS服务器"></a><strong>第三步：一键加速VPS服务器</strong></h1><p>此加速教程为谷歌BBR加速,Vultr的服务器框架可以装BBR加速，加速后对速度的提升很明显，所以推荐部署加速脚本。该加速方法是开机自动启动，部署一次就可以了。</p>
+<p>按照第二步的步骤，连接服务器ip，登录成功后，在命令栏里粘贴以下代码：</p>
+<p>【谷歌BBR加速教程】</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install wget</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget –no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh chmod +x bbr.sh</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bbr.sh</span><br></pre></td></tr></table></figure>
+<p>把上面整个代码复制后粘贴进去，不动的时候按回车，然后耐心等待，最后重启vps服务器即可。</p>
+<p>演示开始，如图：</p>
+<p>复制并粘贴代码后，按回车键确认</p>
+<p><img src="/2018/11/20/VPS与ssr搭建/18.png" alt="18"></p>
+<p><img src="/2018/11/20/VPS与ssr搭建/20.png" alt="20"></p>
+<p>部署到上图这个位置的时候，等待3～6分钟 </p>
+<p><img src="/2018/11/20/VPS与ssr搭建/21.png" alt="21"></p>
+<p>最后输入y重启服务器，如果输入y提示command not found ，接着输入reboot来重启服务器，确保加速生效，bbr加速脚本是开机自动启动，装一次就可以了。 </p>
+<p>购买vps服务器后，ip有了，通过部署，端口、密码、加密方式、协议和混淆也有了，最后将这些信息填入SSR客户端就可以访问外网啦。</p>
+<p><strong>有了账号后，打开SSR客户端，填上信息，这里以windows版的SSR客户端为例子</strong>：</p>
+<p><img src="/2018/11/20/VPS与ssr搭建/42.PNG" alt="42"></p>
+<p>在对应的位置，填上服务器ip、服务器端口、密码、加密方式、协议和混淆，最后将浏览器的代理设置为（http）127.0.0.1和1080即可。账号的端口号就是你自己设置的，而要上网的浏览器的端口号是1080，固定的，谷歌浏览器可以通过 SwitchyOmega 插件来设置。</p>
+<p>启动SSR客户端后，右键SSR客户端图标，选择第一个“系统代理模式”，里面有3个子选项，选择”全局模式“，之后就可以用浏览器设置好了的代理模式（http）127.0.0.1和1080翻墙，此模式下所有的网站都会走SSR代理。（适合新手）</p>
+<p><img src="/2018/11/20/VPS与ssr搭建/32225069-cfe6195a-be7e-11e7-99e0-e2fa98f93b1f.png" alt="32225069-cfe6195a-be7e-11e7-99e0-e2fa98f93b1f"></p>
+<p>以下是shadowSocketR的windows客户端下载链接：</p>
+<p>链接：<a href="https://pan.baidu.com/s/1knC8BS7tRseMG1z3Xjx6hQ" target="_blank" rel="noopener">https://pan.baidu.com/s/1knC8BS7tRseMG1z3Xjx6hQ</a><br>提取码：o95d </p>
+</the>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2018/11/20/VPS与ssr搭建/">VPS与ssr搭建</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">twilight</a></p>
+        <p><span>发布时间:</span>2018-11-20, 18:45:19</p>
+        <p><span>最后更新:</span>2018-11-20, 19:31:54</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/11/20/VPS与ssr搭建/" title="VPS与ssr搭建">https://612yese.github.io/2018/11/20/VPS与ssr搭建/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://612yese.github.io/2018/11/20/VPS与ssr搭建/　　作者: twilight" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2018/11/20/python的xml解析/">
+                    python的xml解析
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2018/11/10/吉他谱-祝你生日快乐/">
+                    吉他谱_祝你生日快乐
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#本文的来源"><span class="toc-number">1.</span> <span class="toc-text">本文的来源</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第一步：购买VPS服务器"><span class="toc-number">2.</span> <span class="toc-text">第一步：购买VPS服务器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第二步：部署VPS服务器"><span class="toc-number">3.</span> <span class="toc-text">第二步：部署VPS服务器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第三步：一键加速VPS服务器"><span class="toc-number">4.</span> <span class="toc-text">第三步：一键加速VPS服务器</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"VPS与ssr搭建　| twilight的窝　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+        <section id="comments">
+    <style> aside.comment-bar { margin: auto 30px; }</style>
+    <div id="disqus_thread"></div>
+    <script>
+        var disqus_config = function(){
+            this.page.url = 'https://612yese.github.io/2018/11/20/VPS与ssr搭建/';
+            this.page.identifier = '2018/11/20/VPS与ssr搭建/';
+        };
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = '//twilight-2.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        }
+    </script>
+    
+    <script> loadComment(); </script>
+
+</section>
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2018/11/20/python的xml解析/" title="上一篇: python的xml解析">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2018/11/10/吉他谱-祝你生日快乐/" title="下一篇: 吉他谱_祝你生日快乐">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/11/23/ubuntu安装tensorflow-gpu-1-9之五tensorflowGPU/">ubuntu安装tensorflow_gpu-1.9之五tensorflowGPU</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/23/ubuntu安装tensorflow-gpu-1-9之四Anaconda/">ubuntu安装tensorflow_gpu-1.9之四Anaconda</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/23/ubuntu安装tensorflow-gpu-1-9之三cudnn7-3/">ubuntu安装tensorflow_gpu-1.9之三cudnn7.3</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/23/ubuntu安装tensorflow-gpu-1-9之二cuda9-0/">ubuntu安装tensorflow_gpu-1.9之二cuda9.0</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/23/ubuntu安装tensorflow-gpu-1-9之一nvidia/">ubuntu安装tensorflow_gpu-1.9之一nvidia</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/22/linux环境配置之sublime插件安装/">linux环境配置之sublime插件安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/21/linux下Nvidia驱动安装/">linux下Nvidia驱动安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/21/linux与windows双系统安装/">linux与windows双系统安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/21/python的os-path用法/">python的os.path用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/20/python的xml解析/">python的xml解析</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/20/VPS与ssr搭建/">VPS与ssr搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/10/吉他谱-祝你生日快乐/">吉他谱_祝你生日快乐</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/10/python里的Data-streaming总结/">python里的Data streaming总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/09/分词/">jieba之分词</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/09/tfidf/">genism之tfidf</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/09/word2vec/">word2vec工具探索</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/07/建立这个站点/">如何建立这个站点</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2018 twilight
+            </div>
+            <div class="footer-right">
+                <!--<a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>-->
+                <a href="http://612yese.github.io/" target="_blank" title="快速、简洁且高效的博客框架">twilight</a>の个人博客  <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style="display:none">
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style="display:none">
+                        <span id="page-visit" title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 1;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
