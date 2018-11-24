@@ -7,6 +7,7 @@ git add .
 git commit -m "backup commit"
 git push origin master
 cd ..\blog
+color 02
 echo Success:we have finished the bat
 echo press any key to exit...
 pause>nul
