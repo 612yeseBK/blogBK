@@ -17,7 +17,7 @@ pause>nul
 if not "!t!"=="" (
 >"!t!_",set /p "=   "<nul
 findstr /a:02 .* "!t!_*" 2>nul
-ping -n 1 127.1>nul
+::ping -n 1 127.1>nul
 del "!t!_"
 )
 goto :eof
