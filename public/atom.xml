@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://612yese.github.io/"/>
-  <updated>2018-11-23T02:43:37.100Z</updated>
+  <updated>2018-11-26T03:19:37.285Z</updated>
   <id>https://612yese.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>批处理提示文字的颜色设置</title>
+    <link href="https://612yese.github.io/2018/11/26/%E6%89%B9%E5%A4%84%E7%90%86%E6%8F%90%E7%A4%BA%E6%96%87%E5%AD%97%E7%9A%84%E9%A2%9C%E8%89%B2%E8%AE%BE%E7%BD%AE/"/>
+    <id>https://612yese.github.io/2018/11/26/批处理提示文字的颜色设置/</id>
+    <published>2018-11-26T03:14:29.000Z</published>
+    <updated>2018-11-26T03:19:37.285Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;excerpt in=&quot;&quot; index=&quot;&quot; |=&quot;&quot; 首页摘要=&quot;&quot;&gt;摘要：这是一篇介绍如何给windows批处理的输出的某一行文字加颜色的文章&lt;/excerpt&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="tools" scheme="https://612yese.github.io/categories/tools/"/>
+    
+    
+      <category term="bat" scheme="https://612yese.github.io/tags/bat/"/>
+    
+  </entry>
   
   <entry>
     <title>ubuntu安装tensorflow_gpu-1.9之五tensorflowGPU</title>
