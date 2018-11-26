@@ -1,4 +1,5 @@
 @echo off
+setlocal enabledelayedexpansion
 echo "begin to backup"
 xcopy . ..\blogBK /s /e /y /EXCLUDE:.\exclude.ins
 cd ..\blogBK
@@ -7,10 +8,16 @@ git add .
 git commit -m "backup commit"
 git push origin master
 cd ..\blog
-goto :successInfo
-
-:successInfo
-color 02
-echo Success:we have finished the bat
-echo press any key to exit...
+set "t=备份完成，请按任意键退出......"
+call :loop
+echo\ &echo end...
 pause>nul
+
+:loop
+if not "!t!"=="" (
+>"!t!_",set /p "=   "<nul
+findstr /a:02 .* "!t!_*" 2>nul
+ping -n 1 127.1>nul
+del "!t!_"
+)
+goto :eof
