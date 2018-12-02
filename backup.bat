@@ -10,6 +10,7 @@ git push origin master
 cd ..\blog
 set "t=备份完成，请按任意键退出......"
 call :loop
+echo.
 pause>nul 
 goto :eof
 
