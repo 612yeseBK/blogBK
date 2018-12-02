@@ -8,6 +8,8 @@ date: 2018-11-10 16:17:37
 <Excerpt in index | 首页摘要>摘要：这是一篇介绍python里的data streaming的文章，关于generators, iterators, iterables都有涉及到<!-- more -->
 <The rest of contents | 余下全文>
 
+原文链接：[Data streaming in Python: generators, iterators, iterables](https://rare-technologies.com/data-streaming-in-python-generators-iterators-iterables/)
+
 # 最重要的是节约了内存
 
 ```
