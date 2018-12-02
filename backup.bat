@@ -10,8 +10,8 @@ git push origin master
 cd ..\blog
 set "t=备份完成，请按任意键退出......"
 call :loop
-echo.
-pause>nul & exit
+pause>nul 
+goto :eof
 
 :loop
 if not "!t!"=="" (
