@@ -51,7 +51,7 @@ vue init webpack myproject
 
 引入第三方插件Element-UI
 
-![1552912956348](/C:/Users/gyong/AppData/Local/Temp/1552912956348.png)
+![1552912956348](/vue-cil搭建/1552912956348.png)
 
 全局注册与引用
 
