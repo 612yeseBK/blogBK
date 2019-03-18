@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://612yese.github.io/"/>
-  <updated>2019-03-18T12:05:38.277Z</updated>
+  <updated>2019-03-18T12:58:24.146Z</updated>
   <id>https://612yese.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue-cil搭建</title>
+    <link href="https://612yese.github.io/2019/03/18/vue-cil%E6%90%AD%E5%BB%BA/"/>
+    <id>https://612yese.github.io/2019/03/18/vue-cil搭建/</id>
+    <published>2019-03-18T12:22:16.000Z</published>
+    <updated>2019-03-18T12:58:24.146Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;excerpt in=&quot;&quot; index=&quot;&quot; |=&quot;&quot; 首页摘要=&quot;&quot;&gt;摘要：这是一篇介绍如何使用搭建vue-cil的文章&lt;/excerpt&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="https://612yese.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="vue-cil" scheme="https://612yese.github.io/tags/vue-cil/"/>
+    
+  </entry>
   
   <entry>
     <title>spingBoot极简搭建</title>
